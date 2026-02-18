@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chainsaw Man Fan Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {margin:0;padding:0;font-family:'Orbitron',sans-serif;background:#000;color:white;overflow-x:hidden;transition:1s;}
+body.theme-dark{background: url('https://comicbook.com/wp-content/uploads/sites/4/2025/07/Chainsaw-Man-The-Movie-Reze-Arc.jpg?resize=2000,1125') center/cover fixed no-repeat; color:white;}
+body.theme-blood{background: url('https://i.ytimg.com/vi/FHI5OwU7JJ0/maxresdefault.jpg') center/cover fixed no-repeat;}
+body.theme-cinema{background: url('https://avatars.mds.yandex.net/i?id=27994a800384e790e9f9b7653f86dc8c_l-4272017-images-thumbs&n=13') center/cover fixed no-repeat; color:black;}
+.smoke{position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://www.transparenttextures.com/patterns/asfalt-light.png');opacity:0.05;animation:smokeMove 60s linear infinite;z-index:-2;}
+@keyframes smokeMove{0%{transform:translate(0,0);}50%{transform:translate(-200px,-100px);}100%{transform:translate(0,0);}}
+.blood-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,rgba(255,0,0,0.2),transparent);pointer-events:none;animation:pulseBlood 3s infinite alternate;z-index:-1;}
+@keyframes pulseBlood{from{opacity:0.2;}to{opacity:0.5;}}
+.side-left, .side-right {position: fixed; top: 0; width: 200px; height: 100%; background-size: cover; background-position: center; opacity: 0.3; z-index: -2; pointer-events: none; animation: sway 10s ease-in-out infinite alternate;}
+.side-left { left: 0; background-image: url('https://images8.alphacoders.com/128/1287147.jpg'); }
+.side-right { right: 0; background-image: url('https://images7.alphacoders.com/128/1287148.jpg'); }
+@keyframes sway { from { transform: translateY(0px) rotate(0deg); } to { transform: translateY(10px) rotate(2deg); } }
+nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);padding:15px;display:flex;justify-content:center;gap:10px;z-index:1000;border-bottom:2px solid #ff2e63;}
+nav a, nav button{color:#ff2e63;text-decoration:none;font-weight:bold;cursor:pointer;border:none;background:none;transition:0.3s;}
+nav a:hover, nav button:hover{color:white;text-shadow:0 0 10px red;}
+header{height:70vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;text-shadow:0 0 20px red;}
+header h1{font-size:60px;animation:glow 2s infinite alternate;}
+@keyframes glow{from{text-shadow:0 0 10px red;}to{text-shadow:0 0 40px #ff2e63;}}
+.section{padding:100px 20px;max-width:1100px;margin:auto;}
+.section h2{text-align:center;margin-bottom:40px;color:#ff2e63;}
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
+.card{width:220px;background:#111;border-radius:15px;overflow:hidden;cursor:pointer;transition:0.4s;border:2px solid #ff2e63;}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card h3{text-align:center;padding:10px;}
+.card:hover{transform:scale(1.07);box-shadow:0 0 25px red;}
+.bio{display:none;background:#111;padding:30px;margin-top:30px;border-radius:20px;animation:fadeUp 0.7s ease;transition: color 0.5s, text-shadow 0.5s;}
+.section-text{transition: color 0.5s, text-shadow 0.5s; font-size:1.2rem; line-height:1.5rem;}
+.theme-dark .section-text{color:white; text-shadow:0 0 10px red,0 0 20px red;}
+.theme-cinema .section-text{color:black; text-shadow:0 0 10px white,0 0 20px white;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+.bar{background:#333;border-radius:20px;overflow:hidden;margin:10px 0;}
+.bar-fill{height:20px;background:#ff2e63;width:0%;transition:1s;}
+.filter{text-align:center;margin-bottom:30px;}
+.filter button{padding:10px 15px;margin:5px;border:none;cursor:pointer;background:#ff2e63;color:white;border-radius:10px;}
+.filter button:hover{background:white;color:#ff2e63;}
+.compare-bars{display:flex;justify-content:space-around;margin-top:30px;}
+.compare-column{width:45%;}
+select{padding:10px;margin:10px;background:#111;color:white;border:1px solid #ff2e63;border-radius:10px;}
+button{padding:10px 15px;background:#ff2e63;border:none;color:white;cursor:pointer;border-radius:10px;}
+</style>
+</head>
+<body class="theme-dark">
+
+<div class="side-left"></div>
+<div class="side-right"></div>
+<div class="smoke"></div>
+<div class="blood-overlay"></div>
+
+<nav>
+<a href="#anime">Аниме</a>
+<a href="#manga">Манга</a>
+<a href="#characters">Персонажи</a>
+<a href="#arcs">Арки</a>
+<a href="#psychology">Психология</a>
+<a href="#compare">Сравнение</a>
+<button onclick="setTheme('theme-dark')">Dark</button>
+<button onclick="setTheme('theme-blood')">Blood</button>
+<button onclick="setTheme('theme-cinema')">Cinema</button>
+</nav>
+
+<header>
+<h1>CHAINSAW MAN</h1>
+<p>Энциклопедия мира демонов</p>
+</header>
+
+<section id="anime" class="section">
+<h2 class="section-text">Об аниме</h2>
+<p class="section-text">
+"Аниме Chainsaw Man" вышло в октябре 2022 года, студия MAPPA. Первый сезон 12 эпизодов, основные арки: Якудза, Демон Летучей мыши, Резе. Анимация динамичная, кровавая, с черным юмором. Музыка усиливает драму и напряжение сцен.
+</p>
+</section>
+
+<section id="manga" class="section">
+<h2 class="section-text">О манге</h2>
+<p class="section-text">
+Манга публикуется с декабря 2018 года в Shonen Jump+, автор Tatsuki Fujimoto. Известна шокирующими сюжетными поворотами, хоррором и психологической глубиной. Основные арки: Якудза, Катана Мен, Резе, Епископ. Раскрывает мир контрактов с демонами, мотивы и страхи героев.
+</p>
+</section>
+
+<section id="characters" class="section">
+<h2 class="section-text">Персонажи</h2>
+<div class="filter">
+<button onclick="filterType('all')">Все</button>
+<button onclick="filterType('human')">Люди</button>
+<button onclick="filterType('devil')">Демоны</button>
+<button onclick="filterType('hybrid')">Гибриды</button>
+</div>
+<div class="cards" id="cardsContainer"></div>
+
+<div id="bio" class="bio">
+<h3></h3>
+<p></p>
+<h4>Характеристики</h4>
+<div>Сила<div class="bar"><div class="bar-fill" id="powerBar"></div></div></div>
+<div>Скорость<div class="bar"><div class="bar-fill" id="speedBar"></div></div></div>
+<div>Интеллект<div class="bar"><div class="bar-fill" id="brainBar"></div></div></div>
+<p></p>
+</div>
+</section>
+
+<section id="arcs" class="section">
+<h2 class="section-text">Арки</h2>
+<ul class="section-text">
+<li>Арка Якудзы — начало истории, знакомство с миром демонов.</li>
+<li>Арка Демона Летучей мыши — первые серьёзные испытания.</li>
+<li>Арка Катана Мен — трагедия и раскрытие персонажей.</li>
+<li>Арка Резе — романтика и моральные конфликты.</li>
+<li>Арка Епископ — новые демоны и раскрытие сил героев.</li>
+</ul>
+</section>
+
+<section id="psychology" class="section">
+<h2 class="section-text">Психология персонажей</h2>
+<p class="section-text">
+<b>Денджи:</b> Наивный, ищет любовь и признание, сильный внутренний рост через страдания.<br>
+<b>Макима:</b> Холодная, расчетливая, стремится к контролю и власти, страх хаоса.<br>
+<b>Аки:</b> Смелый, преданный, внутренне разрывается между человечностью и долгом.<br>
+<b>Пауэр:</b> Эгоизм как защитный механизм, баланс между диким инстинктом и дружбой.<br>
+<b>Резе:</b> Разрывается между долгом и обычной жизнью, эмоциональная привязанность.<br>
+<b>Катана Мен:</b> Честь, ответственность, защита близких, психологическая стойкость.<br>
+<b>Кобени:</b> Страх и тревожность делают её быстрой и внимательной.
+</p>
+</section>
+
+<section id="compare" class="section">
+<h2 class="section-text">Сравнение персонажей</h2>
+<select id="char1"></select>
+<select id="char2"></select>
+<button onclick="compare()">Сравнить</button>
+<div id="result"></div>
+</section>
+
+<script>
+const characters=[
+{name:"Денджи",type:"hybrid",power:85,speed:80,brain:60,bio:"Денджи — бывший бедняк, превратился в Человека-Бензопилу, стремится к простым радостям и выживанию.",psychology:"Наивный, ищет любовь и признание." , img:"https://avatars.mds.yandex.net/i?id=a15211c7f165d8f3dfbaed65f844df4a_l-12645377-images-thumbs&n=13"},
+{name:"Макима",type:"devil",power:98,speed:95,brain:100,bio:"Макима — демон Контроля, лидер охотников на демонов, манипулирует всеми.",psychology:"Холодная, расчетливая, стремится к абсолютному контролю.", img:"https://i.ytimg.com/vi/Uy7suquYsE8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYACxAWKAgwIABABGEogZShkMA8=&amp;rs=AOn4CLBCxwa45L4JECB-4_nCU1hOdt061w"},
+{name:"Аки",type:"human",power:80,speed:75,brain:85,bio:"Аки — охотник на демонов, потерял семью, движим местью.",psychology:"Смелый, преданный, внутренне разрывается между человечностью и долгом.", img:"https://avatars.mds.yandex.net/i?id=b7baae3fa57452f6d615d29616436707_l-3703763-images-thumbs&n=13"},
+{name:"Пауэр",type:"devil",power:75,speed:85,brain:55,bio:"Пауэр — демон крови, импульсивный, привязан к друзьям.",psychology:"Эгоизм как защитный механизм, баланс между дружбой и инстинктом.", img:"https://yandex-images.clstorage.net/s4j8pv269/156d4feM/jPQ08kCqhGleyszY7aa3LBL-357zA3ArXBW9ubOIJAwUu-theYwNRXo9KApsrQ07e_gajN1o9Cu2iQFGsZkHrSlwQeZlLjGNLsqdnF0CdozT_4tfJzLRDtzW3g50yjKbl6x5Rs5tqBWPfTmrrDmu7erJfpiI3OFekMxFdwLZgapN1WfyAuu1nJwJjOxcFIWsYw8KPKDw5lu5Jc5e50lhSFa-iedsfakFD87639z5Th09qC0JSI7RrxJMJMTSmTNLPiYmcdPa12wuCb6NfUSVHSDeyxxDk2ZIS3a_DyT4oGp0fIq2fM8ql3y-av_f2K28P8ndypg9gQxxjManMqnwOP70ViGzmfUNfXpMfsyU5RzSzlrsYfG3qsk33v4kOpM79D4rJC-POPQfbdjeTuo9jo7ZXKv5buIuQSznB-IJYYocpyfhUpiVTx8a_t89RCcO4S04HnGy5_j7lC-OVVjw-heua6VNnMtmXk9ZDR4KXA9tiRz6yDyyHnGM5sRxaGJIL_V3gKGIxa-euC0-TTfXbJDN-m9B8aXpaJRM3ReZM_jF_ivU3_xLNy_O-F-d-S9cbhrNWut9AlyjnOV1s3lhmDwG1ZNAKJZPnWvPLm9mVGzT_RvekcCl6qq3jN30axEJdk4KVm3eSOeOfmtMT6r-Dl9LTvkIjPPfoEx0h9JZ8_qNRSbBkdvVPJ-a3u5cV6WtAa2aHlIQ59jbdVxe1Brjm3bsCebvvghX7894v77YfU7u6F84y-4RLFDNRvSSSdEZXWd1w8M61FwsKY--LIfE3LCPm_0CMRZrqHQNPOdK4gmV3vh2TxxphGxviY2d6B9ffileuXg-08-zXYbXonhCeF43B8OQaVRcLImc_66mtl9Qvxo9IcBXW6rlru0U6YH5tJ5YZR7seBVPXBsv7FiMPzwqPziqLUOOM-yWxLMLMkl8Z4aB4alEfWyZ7VyvZFVOMI_ZnKADZFpbhDyeRCrRI"},
+{name:"Резе",type:"hybrid",power:90,speed:92,brain:75,bio:"Резе — гибрид Бомбы, романтическая связь с Денджи.",psychology:"Разрывается между долгом и обычной жизнью.", img:"https://avatars.mds.yandex.net/i?id=294ecc1bdba27e118ec9e03544a0ffcf_l-12421615-images-thumbs&n=13"},
+{name:"Катана Мен",type:"hybrid",power:88,speed:85,brain:70,bio:"Катана Мен — гибрид Катаны, связана с якудзой.",psychology:"Следует кодексу семьи, честь и защита близких.", img:"https://avatars.mds.yandex.net/i?id=1db2da66accc6974d091a935d6f2ec3c_l-8211098-images-thumbs&n=13"},
+{name:"Кобени",type:"human",power:65,speed:90,brain:78,bio:"Кобени — охотница на демонов, тревожная, внимательная.",psychology:"Страх и тревожность делают её быстрой и рациональной.", img:"https://avatars.mds.yandex.net/i?id=416d244354ee84e237c5a06fdc5ad29e_l-4984230-images-thumbs&n=13"}
+];
+
+const cardsContainer=document.getElementById('cardsContainer');
+characters.forEach((char,i)=>{
+let card=document.createElement('div');card.className='card';
+card.onclick=()=>showBio(i);
+card.innerHTML=`<img src="${char.img}"><h3>${char.name}</h3>`;
+cardsContainer.appendChild(card);
+});
+
+function showBio(i){
+let char=characters[i];
+document.getElementById('bioName').innerText=char.name;
+document.getElementById('bioText').innerText=char.bio;
+document.getElementById('psychAnalysis').innerText=char.psychology;
+document.getElementById('bio').style.display='block';
+setTimeout(()=>{
+document.getElementById('powerBar').style.width=char.power+'%';
+document.getElementById('speedBar').style.width=char.speed+'%';
+document.getElementById('brainBar').style.width=char.brain+'%';
+},200);
+}
+
+function filterType(type){
+document.querySelectorAll('.card').forEach((card,i)=>{
+card.style.display=(type==='all'||characters[i].type===type)?'block':'none';
+});
+document.getElementById('bio').style.display='none';
+}
+
+function setTheme(theme){document.body.className=theme;}
+
+const select1=document.getElementById('char1'); const select2=document.getElementById('char2');
+characters.forEach((c,i)=>{
+let o1=document.createElement('option');o1.value=i;o1.text=c.name;select1.appendChild(o1);
+let o2=document.createElement('option');o2.value=i;o2.text=c.name;select2.appendChild(o2);
+});
+
+function compare(){
+let c1=characters[select1.value],c2=characters[select2.value];
+document.getElementById('result').innerHTML=`
+<div class="compare-bars">
+<div class="compare-column">
+<h3>${c1.name}</h3>
+Сила<div class="bar"><div class="bar-fill" style="width:${c1.power}%"></div></div>
+Скорость<div class="bar"><div class="bar-fill" style="width:${c1.speed}%"></div></div>
+Интеллект<div class="bar"><div class="bar-fill" style="width:${c1.brain}%"></div></div>
+</div>
+<div class="compare-column">
+<h3>${c2.name}</h3>
+Сила<div class="bar"><div class="bar-fill" style="width:${c2.power}%"></div></div>
+Скорость<div class="bar"><div class="bar-fill" style="width:${c2.speed}%"></div></div>
+Интеллект<div class="bar"><div class="bar-fill" style="width:${c2.brain}%"></div></div>
+</div>
+</div>`;
+}
+
+setInterval(()=>{document.querySelector('header h1').style.letterSpacing=Math.random()*5+'px';},800);
+</script>
+</body>
+</html>
